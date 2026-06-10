@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MotoTrack — Perawatan Motormu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">⚙</span>
+        <span class="logo-text">MotoTrack</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#tambah">Motor Saya</a>
+        <a href="#riwayat">Riwayat</a>
+        <a href="#tips">Tips</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Jadwal Perawatan Motor</p>
+        <h1 class="hero-headline">Jangan Sampai<br/><span class="accent">Telat Servis</span><br/>Lagi.</h1>
+        <p class="hero-sub">Lacak ganti oli, servis berkala, ban, dan perawatan lainnya — semua dalam satu tempat. Gratis, simpel, langsung dari browser.</p>
+        <a href="#tambah" class="btn-primary">Mulai Sekarang →</a>
+      </div>
+      <div class="hero-visual">
+        <div class="gauge-wrap">
+          <svg class="gauge-svg" viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+            <!-- gauge track -->
+            <path d="M 20 120 A 80 80 0 0 1 180 120" fill="none" stroke="#1E2D45" stroke-width="14" stroke-linecap="round"/>
+            <!-- gauge fill - 72% -->
+            <path d="M 20 120 A 80 80 0 0 1 180 120" fill="none" stroke="#E8621A" stroke-width="14" stroke-linecap="round"
+              stroke-dasharray="251.3" stroke-dashoffset="70" class="gauge-fill"/>
+            <!-- needle -->
+            <line x1="100" y1="120" x2="62" y2="55" stroke="#F8F6F1" stroke-width="3" stroke-linecap="round" class="needle"/>
+            <circle cx="100" cy="120" r="8" fill="#E8621A"/>
+            <circle cx="100" cy="120" r="4" fill="#F8F6F1"/>
+            <!-- labels -->
+            <text x="16" y="138" fill="#6B7A8D" font-size="10" font-family="Inter">0</text>
+            <text x="90" y="30" fill="#6B7A8D" font-size="10" font-family="Inter">50%</text>
+            <text x="176" y="138" fill="#6B7A8D" font-size="10" font-family="Inter">100</text>
+          </svg>
+          <div class="gauge-label">
+            <span class="gauge-pct">72%</span>
+            <span class="gauge-desc">Kondisi Oli</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">Jenis Perawatan</span></div>
+      <div class="stat"><span class="stat-num">0</span><span class="stat-lbl">Hari Terlambat</span></div>
+      <div class="stat"><span class="stat-num">∞</span><span class="stat-lbl">Umur Motor</span></div>
+    </div>
+  </section>
+
+  <!-- TAMBAH / FORM MOTOR -->
+  <section class="section-form" id="tambah">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Data Motor</p>
+        <h2>Daftarkan Motormu</h2>
+        <p class="section-sub">Isi informasi motor dan perawatan terakhir, MotoTrack akan hitung kapan waktunya servis berikutnya.</p>
+      </div>
+      <div class="form-card">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="namaMotor">Nama / Plat Motor</label>
+            <input type="text" id="namaMotor" placeholder="Contoh: Honda Vario 125 - N 1234 AB" />
+          </div>
+          <div class="form-group">
+            <label for="kmSekarang">Odometer Sekarang (km)</label>
+            <input type="number" id="kmSekarang" placeholder="Contoh: 15000" />
+          </div>
+          <div class="form-group">
+            <label for="kmOli">Km Terakhir Ganti Oli</label>
+            <input type="number" id="kmOli" placeholder="Contoh: 13500" />
+          </div>
+          <div class="form-group">
+            <label for="tglOli">Tanggal Terakhir Ganti Oli</label>
+            <input type="date" id="tglOli" />
+          </div>
+          <div class="form-group">
+            <label for="kmServis">Km Terakhir Servis Berkala</label>
+            <input type="number" id="kmServis" placeholder="Contoh: 12000" />
+          </div>
+          <div class="form-group">
+            <label for="tglServis">Tanggal Terakhir Servis</label>
+            <input type="date" id="tglServis" />
+          </div>
+          <div class="form-group">
+            <label for="tglBan">Tanggal Terakhir Ganti Ban</label>
+            <input type="date" id="tglBan" />
+          </div>
+          <div class="form-group">
+            <label for="kmAki">Km Terakhir Cek Aki</label>
+            <input type="number" id="kmAki" placeholder="Contoh: 10000" />
+          </div>
+        </div>
+        <button class="btn-primary btn-block" id="btnHitung">Hitung Jadwal Perawatan</button>
+      </div>
+
+      <!-- Container 3D — muncul otomatis kalau motor ada modelnya -->
+      <div id="motor3dContainer" style="margin-top: 2rem;"></div>
+
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="section-dashboard" id="dashboard">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Dashboard</p>
+        <h2>Status Perawatan</h2>
+      </div>
+      <div class="cards-grid" id="cardsGrid">
+        <!-- Cards rendered by JS -->
+        <div class="card-placeholder">
+          <p>⬆ Isi data motor di atas<br/>untuk melihat status perawatan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIWAYAT -->
+  <section class="section-riwayat" id="riwayat">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Riwayat</p>
+        <h2>Log Perawatan</h2>
+        <p class="section-sub">Catatan setiap perawatan yang sudah dilakukan.</p>
+      </div>
+      <div class="riwayat-wrap" id="riwayatWrap">
+        <div class="empty-state">Belum ada riwayat perawatan yang dicatat.</div>
+      </div>
+      <div style="text-align:center;margin-top:2rem;">
+        <button class="btn-secondary" id="btnTambahRiwayat">+ Catat Perawatan Selesai</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL CATAT -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <h3>Catat Perawatan</h3>
+      <div class="form-group">
+        <label for="rJenis">Jenis Perawatan</label>
+        <select id="rJenis">
+          <option value="Ganti Oli">Ganti Oli</option>
+          <option value="Servis Berkala">Servis Berkala</option>
+          <option value="Ganti Ban">Ganti Ban</option>
+          <option value="Cek Aki">Cek Aki</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="rTanggal">Tanggal</label>
+        <input type="date" id="rTanggal" />
+      </div>
+      <div class="form-group">
+        <label for="rKm">Odometer Saat Itu (km)</label>
+        <input type="number" id="rKm" placeholder="Contoh: 15200" />
+      </div>
+      <div class="form-group">
+        <label for="rCatatan">Catatan (opsional)</label>
+        <input type="text" id="rCatatan" placeholder="Contoh: Ganti oli Shell Advance 10W-40" />
+      </div>
+      <div class="modal-actions">
+        <button class="btn-ghost" id="btnModalClose">Batal</button>
+        <button class="btn-primary" id="btnModalSave">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <section class="section-tips" id="tips">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Panduan</p>
+        <h2>Tips Perawatan Motor</h2>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">🛢️</div>
+          <h4>Ganti Oli</h4>
+          <p>Ganti oli setiap <strong>2.000–3.000 km</strong> atau <strong>3 bulan</strong> sekali, mana yang lebih cepat. Oli kotor membuat mesin cepat aus.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🔧</div>
+          <h4>Servis Berkala</h4>
+          <p>Servis setiap <strong>6.000 km</strong> untuk motor harian. Meliputi tune-up, cek busi, filter udara, dan rem.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🔘</div>
+          <h4>Ganti Ban</h4>
+          <p>Ban depan ganti setiap <strong>2–3 tahun</strong> atau jika tapak sudah tipis. Ban belakang lebih cepat aus karena menahan beban lebih besar.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">⚡</div>
+          <h4>Aki / Baterai</h4>
+          <p>Cek aki setiap <strong>6 bulan</strong>. Aki motor umumnya bertahan <strong>2–3 tahun</strong>. Tanda mau lemah: starter berat di pagi hari.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">💧</div>
+          <h4>Radiator (Motor Injection)</h4>
+          <p>Cek cairan coolant setiap <strong>6 bulan</strong>. Ganti total setiap <strong>2 tahun</strong>. Overheating bisa merusak mesin permanen.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🔗</div>
+          <h4>Rantai / Drive Belt</h4>
+          <p>Rantai motor sport/bebek: beri pelumas setiap <strong>500 km</strong> dan ganti setiap <strong>20.000–25.000 km</strong>. V-belt matic: ganti di <strong>20.000–25.000 km</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">⚙</span>
+        <span class="logo-text">MotoTrack</span>
+        <p>Jaga motormu, jaga perjalananmu.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#tambah">Motor Saya</a>
+        <a href="#riwayat">Riwayat</a>
+        <a href="#tips">Tips</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 MotoTrack. Dibuat dengan ❤ untuk pengendara Indonesia.</p>
+    </div>
+  </footer>
+
+  <script src="motor3d.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
